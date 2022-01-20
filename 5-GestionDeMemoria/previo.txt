@@ -1,0 +1,24 @@
+1- Para compilar el fichero mem1_previo.c he usado el comando "gcc -o mem1_previo mem1_previo.c"
+
+2-
+mem2_previo (10):
+
+55f2981da000-55f298202000 rw-p 00000000 00:00 0             /home/bernat/Desktop/SO/S5/S5/mem2_previo
+55f298202000 - 55f2981da000 = 0x28000
+
+mem2_previo (40000):
+
+561b520da000-561b52102000 rw-p 00000000 00:00 0             /home/bernat/Desktop/SO/S5/S5/mem2_previo
+561b52102000 - 561b520da000 = 0x28000
+
+mem2_previo_v2 (10):
+
+555bbc4f4000-555bbc4f5000 rw-p 00000000 00:00 0               [heap]
+555bbc4f5000 - 555bbc4f4000 = 0x1000 bytes
+
+mem2_previo_v2 (40000):
+
+557e87143000-557e8716b000 rw-p 00000000 00:00 0               [heap]
+557e8716b000 - 557e87143000 = 0x28000 bytes
+
+Con la ejecución de mem2_previo siempre se reserva la misma memoria, pero el mem2_previo_v2 la memoria reservada varia según el tamaño del vector 

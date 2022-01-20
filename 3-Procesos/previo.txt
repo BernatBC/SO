@@ -1,0 +1,53 @@
+ejemplo_fork1:
+	Soy el proceso 4889
+	Soy el proceso 4890
+El primero es el proceso del padre ya que el hijo (el segundo) tiene un número de proceso posterior al del padre
+
+ejemplo_fork2:
+	Antes del fork: Soy el proceso 4930
+	PADRE: Soy el proceso 4930
+	Los DOS: Soy el proceso 4930
+	HIJO: Soy el proceso 4931
+	Los DOS: Soy el proceso 4931
+El padre escribe los tres primeros ya que el pid del segundo y el tercero es el mismo que el pid de antes del fork. El hijo escribe los dos últimos ya que el pid es distinto al del padre.
+
+ejemplo_fork3:
+	Antes del fork: Soy el proceso 4939
+	PADRE: Soy el proceso 4939
+	Solo lo ejecuta el padre: Soy el proceso 4939
+	HIJO: Soy el proceso 4940
+El padre escribe los tres primeros ya que el pid del segundo y el tercero es el mismo que el pid de antes del fork. El hijo escribe el último ya que el pid es distinto al del proceso de antes del fork.
+
+ejemplo_fork4:
+	Antes del fork: Soy el proceso 4961
+	PADRE: Soy el proceso 4961
+	Solo lo ejecuta el padre: Soy el proceso 4961
+	HIJO: Soy el proceso 4962
+	HIJO acaba: Soy el proceso 4962
+El proceso del padre acaba antes que el del hijo.
+
+ejemplo_fork5:
+	Antes del fork: Soy el proceso 5396
+	PADRE: Soy el proceso 5396
+	HIJO: Soy el proceso 5397
+	HIJO:La variable_global vale A y la local a
+	PADRE:La variable_global vale A y la local a
+	Solo lo ejecuta el padre: Soy el proceso 5396
+El proceso padre escribe el primer mensaje, el segundo, el cuarto y el quinto ya que el pid corresponde al del proceso de antes del fork. Los otros dos son del proceso hijo ya que el pid es distinto al del padre.
+
+ejemplo_fork6:
+la salida son procesos de padre e hijo que escriben la variable muchas veces una variable.
+No podemos asegurarlo. Lo he comprobado con la ayuda de una herramienta de comparacion de ficheros después de ejecutar el código dos veces. No será el mismo ya que el sistema operativo es el encargado de distribuir los recursos del PC.
+
+ejemplo_fork7:
+el codigo no complia ya que dentro de la funcion "Escribe_variables()" no tiene acceso a la variable_local. No tiene que ver con crear procesos, y se puede arreglar pasando la variable como un argumento a la función.
+
+ejemplo_exec1:
+en pantalla veo el listado de los archivos que contiene el directorio donde he ejecutado el programa. El pid aparece sólo una vez ja que se ha cambiado el proceso. Ha dejado de ejecutar "ejemplo_exec1.c" para ejecutar el ls.
+
+ejemplo_exec2:
+	Soy el proceso: 5915
+	Soy el proceso 5915
+	Soy el proceso 5916
+El primer mensaje aparece cuando se ejecuta "ejemplo_exec2", y cuando se transforma, ejecuta "ejemplo_fork1", donde escribe los dos últimos mensajes. En total se ejecutan dos procesos: el padre (que cambia de proceso), y el hijo (que aparece cuando se ejecuta el fork)
+

@@ -1,0 +1,16 @@
+alarm1:
+1- Cuando pasan los 5 segundos, el programa sigue esperando hasta los 10 segundos.
+2- El comportamiento es diferente. En vez de mostrar el mensaje "Alarm Clock", aparece "Killed"
+3- Es el sistema operativo quien se encarga de mostrar el mensaje "Killed". Seguramente utiliza la llamada waitpid para ver si un proceso ha terminado o no.
+4- Es necesario, pero si no lo escribes, el compilador lo añade automaticamente. No se ejecutará ya que antes se ejecuta un sigsuspend, que bloquea el proceso.
+
+alarm2:
+1- He observado que al enviar un signal de alarm, el programa recibe antes este signal, que el de la funcion alarm(). Al enviar los signals, el tiempo que transcurre entre mensaje y mensaje es menor a 10 segundos.
+2- Se puede modificar los tratamientos de todos los signals excepto SIGKILL y SIGSTOP.
+3- Para solucionarlo, sabemos que alarm() nos devuelve el tiempo restante para que se produzca el signal, y podemos aññadir un if para ignorar el signal si alarm() nos devuelve un valor mayor a 0.
+
+alarm3:
+1- Los dos reciben los SIGALARM, y lo he comprobado ejecutando el programa. Me indica el pid de los dos procesos juntamente con los segundos. El programa ya estaba modificado porque ya aparezen los pids de los procesos.
+
+alarm4:
+1- Aparecen 10 mensajes de alarma, solo de un proceso. Solo los muestra el hijo. El padre se queda bloqueado por un sigsuspend(). Lo he comprobado mirando el código. Se muestra que en caso de hacer un fork(), si el pid es 0 (hijo), entonces programa un alarm.

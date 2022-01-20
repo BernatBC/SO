@@ -1,0 +1,53 @@
+35- Solo aparece la variable globalArray, que ocupa la dirección 0x4080. La variable está en bss, como indica la B. Es una variable global.
+
+36- Basicamente, al compilar con el método static, el tamaño del ejecutable es mucho mas grande, hay mas variables e información con los comandos nm y objdump. Esto sucede ya que con el -static compilamos el codigo de las librerias y lo añadimos al ejecutable, en vez de poner referencias a las librerias ya existentes en la maquina.
+
+37- En la versión dinamica, las direcciones de programa son direcciones que no son "redondas", y en cambio el static son direcciones "redondas".
+
+38-
+mem1_dynamic:
+55c0b4060000-55c0b4061000 rw-p 00000000 00:00 0
+55c0b4aac000-55c0b4acd000 rw-p 00000000 00:00 0                          [heap]
+7febbaa14000-7febbaa16000 rw-p 00000000 00:00 0
+7febbabd9000-7febbabe4000 rw-p 00000000 00:00 0
+7ffca50f3000-7ffca5114000 rw-p 00000000 00:00 0                          [stack]
+
+mem1_static:
+004b1000-004b3000 rw-p 00000000 00:00 0
+00b56000-00b78000 rw-p 00000000 00:00 0                                  [heap]
+7ffe66e3b000-7ffe66e5c000 rw-p 00000000 00:00 0                          [stack]
+
+la variable globalArray se almacena en bss (dentro de .data), los datos que ocupan posiciones creadas por malloc() al heap, y todas las otras en la region stack
+
+39-
+parametro 3: (1 mallocs)
+55ac6a544000-55ac6a565000 rw-p 00000000 00:00 0                          [heap]
+55ac6a565000 - 55ac6a544000 = 0x21000
+
+parametro 5: (1 mallocs)
+5654692a6000-5654692c7000 rw-p 00000000 00:00 0                          [heap]
+5654692c7000 - 5654692a6000 = 0x21000
+
+parametro 100: (4 mallocs)
+55ed57296000-55ed5731a000 rw-p 00000000 00:00 0                          [heap]
+55ed5731a000 - 55ed57296000 = 0x84000
+
+Si, dependiendo del numero de mallocs (y del tamaño) el sistema reservará unn espacio de memoria distinto. El sistema hace solo un sbrk con los primeros mallocs, pero cuando el usuario ha hecho muchos mallocs, el sistema hace otro sbrk para reservar más memoria.
+
+40-
+01224000-012a9000 rw-p 00000000 00:00 0                                  [heap]
+012a9000 - 01224000 = 0x85000
+El sistema no libera memoria ya que la hemos reservado con malloc, y es él quien decide liberar definitivamente la memoria
+
+41-
+parametro 3:
+008ad000-008cf000 rw-p 00000000 00:00 0                                  [heap]
+008cf000 - 008ad000 = 0x22000
+
+parametro 5:
+0195d000-0197f000 rw-p 00000000 00:00 0                                  [heap]
+0197f000 - 0195d000 = 0x22000
+
+parametro 100:
+00e97000-00f1c000 rw-p 00000000 00:00 0                                  [heap]
+00f1c000 - 00e97000 = 0x85000

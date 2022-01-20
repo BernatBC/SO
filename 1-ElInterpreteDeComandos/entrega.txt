@@ -1,0 +1,38 @@
+1- Para crear los directorios: mkdir S1 S2 S3 S4 S5
+
+2a- Para mostrar el contenido del directorio: ls
+2b- Para mostrar el contenido del directorio (incluidos los ocultos): ls -a, la opcion es: -a
+
+3a- La opcion que hay que añadir es: -l
+3b- Los campos que aparecen son: los permisos que tienes, (un número), el autor, el espacio que ocupa, el día y hora de la ultima modificacion, y el nombre del fichero/directorio
+
+4- He seleccionado una columna de los detalles con el boton derecho, y he seleccionado que aparezcan ciertas columnas de detalles
+
+5- Para borrarlo he ejecutado: rmdir S2, y después he ejecutado ls para comprobar que no está, y finalmente mkdir S2 para volverlo a crear
+
+6- Con el comando cat se muestra en consola el contenido del fichero indicado. Con less se muestra el contenido en el mismo formato que se mustra man
+
+7a- Con la opcion -i, si el fichero ya existe, te pregunta si lo quieres sobreescribir
+7b- El comando es: alias cp='cp -i'
+
+8- Con la opcion -i en el comando rm, la consola te pregunta si quieres eliminar definitivamente el fichero
+
+9a- Las opciones de chmod que he puesto son: ugo=w
+9b- Ha devuelto: cat: test.txt: Permission denied
+9c- Las opciones de chmod que he puesto son: ugo=r
+9d- He podido borrarlo, pero antes me ha preguntado: rm: remove write-protectes regular empty file 'test.txt'?
+
+10- La variable PATH indica las rutas de los distintos directorios por defecto. La variable HOME indica la ruta del directorio donde se situa el home de tu usuario. La variable PATH indica la ruta del directorio donde la terminal está trabajando.
+
+11- Separa los directorios con el caracter :
+
+12a- He definido: export SO=/home/bernat/Desktop/SO
+12b- He consultado el valor con: echo $SO
+
+13- Se ha ejecutado el falso ls. Con el comando ls me muestra: /home/bernat/Desktop/SO/S1/ls, el directorio donde se encuentra el falso ls
+
+14- El directorio actual no está definido en $PATH. Esto implica que busca el comando ls en el directorio actual antes que en el de sistema. Por eso se nos muestra el mensaje de ls falso.
+
+15- Ahora se ha ejecutado el ls de sistema, y al comprobarlo me muestra: /usr/bin/ls
+
+16- Con >, s redirecciona la salida en el fichero indicado, sobreescribiendolo. Con >>, se hace lo mismo que >, pero en vez de sobreescribir el fichero, se añade al final de este

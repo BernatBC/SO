@@ -1,0 +1,16 @@
+1- la llamada read devuelve un 0 cuando se indica con control+D que no hay mas datos por leer
+
+2- ./es1 < in.txt
+
+3- aparece un listado detallado de archivos que contiene es en su nombre
+  'grep' realiza una busqueda del parametro 'es' del archivo indicado, en este caso el texto listado por ls -l
+
+4- ps -e | grep bash
+
+5- En el primer caso se escriben 1702129221 bytes, y en el segundo 1696624498
+  Solo veo que el numero es distinto
+
+6a-
+
+6b- El major indica el tipo de dispositivo, y el minor una instancia concreta respecto el major. Sirven para identificar el driver.
+    el primer driver utiliza 249 como major, y el segundo 250. Ambos utilizan 0 como minor

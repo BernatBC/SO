@@ -1,0 +1,1 @@
+17- He tenido que añadir las opciones '-c' para compilarlo, y para que encuentre mis_funciones.h he añadido la opcion 'mis_funciones.h'

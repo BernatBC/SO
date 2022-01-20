@@ -1,0 +1,19 @@
+18- Podemos guardar el pid de los hijos variable cuando hacemos el fork(). Para consultar el pid propio, podemos utilizar la funcion getpid()
+
+19- Se ejecutará en caso que el execlp falle
+
+20- Aparecen los directorios attr, cwd, fd, fdinfo, map_files, net, ns, root y task; he utilizado el comando ls acompañado de la opción -d
+
+21- No he sabido encontrar (ni con el find) la variable PATH en el environ. En el env aparecen las distintas direcciones por defecto. En el PWD del environ, aparece la direccion donde he ejecutado el programa, y en el comando env sale la direccion donde lo he ejecutado. El status es: Running. El consumo de CPU es 0, segun el argumento 44.
+
+22- No apuntan a ningún proceso. El cwd indica el directorio donde se situa. El exe apuntaría al ejecutable donde aparecía el proceso.
+
+23- El status si que lo puedo abrir, y sale que el proceso está en modo Zombie.
+
+24- Ahora sí apuntan a algun proceso. El cwd indica el directorio donde se situa. El exe apuntaría al ejecutable donde aparecía el proceso. Ahora apuntan a los ficheros ya que el proceso está activo, y no en zombie.
+
+25- Ahora todos se pueden abrir, y sale que el proceso está en modo Running. Ahora está en running ya que no se ha finalizado el proceso con el exit().
+
+26- No he podido encontrar este proceso porque ya ha finalizado
+
+27- He ejecutado el archivo con > out_n.txt para guardar la salida de cada ejecucion (n diferentes).
