@@ -1,0 +1,95 @@
+1a- Amb la comanda df -T.
+Filesystem     Type
+dev            devtmpfs
+run            tmpfs
+/dev/sdb3      ext4
+tmpfs          tmpfs
+tmpfs          tmpfs
+/dev/loop2     squashfs
+/dev/loop1     squashfs
+/dev/loop0     squashfs
+/dev/loop3     squashfs
+/dev/loop4     squashfs
+/dev/loop5     squashfs
+/dev/sda2      vfat
+tmpfs          tmpfs
+
+1b- Mirant la columna de IFree de la comanda df -i.
+
+1c- Restant la columna Size amb la Used quan utilitzes la comanda df.
+
+2a- sl_pr: symbolic link (soft link). hl_pr: regular file (hard link).
+
+File: pr.txt
+  Size: 19              Blocks: 8          IO Block: 4096   regular file
+Device: 8,19    Inode: 2638380     Links: 1
+
+File: sl_pr -> pr.txt
+  Size: 6               Blocks: 0          IO Block: 4096   symbolic link
+Device: 8,19    Inode: 2638381     Links: 1
+
+File: hl_pr
+  Size: 19              Blocks: 8          IO Block: 4096   regular file
+Device: 8,19    Inode: 2638380     Links: 2
+
+Tenen 1 i 2 links. Significa que el hard_link està enlleçat amb pr.txt i sl_pr, i soft només amb pr.txt.
+Tenen l'inode 2638380, 2638381, 2638380. hl_pr té el mateix inode que pr.txt. Significa que comparteixen fitxer (és el mateix fitxer).
+
+2b-
+sl_pr:
+  cat: esto es una prueba
+
+  namei: f: sl_pr
+          l sl_pr -> pr.txt
+          - pr.txt
+
+  readlink: pr.txt
+
+hl_pr:
+  cat: esto es una prueba
+  namei: f: hl_pr
+          - hl_pr
+
+  readlink: (No surt res)
+
+A readlink, hl_pr no surt res, ja que no té cap link amb pr.txt ja que és el mateix fitxer.
+
+2c-
+sl_pr:
+  stat:
+  File: sl_pr -> pr.txt
+Size: 6               Blocks: 0          IO Block: 4096   symbolic link
+Device: 8,19    Inode: 2638381     Links: 1
+Access: (0777/lrwxrwxrwx)  Uid: ( 1000/  bernat)   Gid: ( 1000/  bernat)
+Access: 2021-12-19 15:59:36.671250536 +0100
+Modify: 2021-12-19 15:59:36.671250536 +0100
+Change: 2021-12-19 15:59:36.671250536 +0100
+Birth: 2021-12-19 15:59:36.671250536 +0100
+
+  cat: cat: sl_pr: No such file or directory
+
+  namei: f: sl_pr
+ l sl_pr -> pr.txt
+     pr.txt - No such file or directory
+
+  readlink: pr.txt
+
+  sl_pr:
+    stat:
+    File: hl_pr
+  Size: 19              Blocks: 8          IO Block: 4096   regular file
+Device: 8,19    Inode: 2638380     Links: 1
+Access: (0644/-rw-r--r--)  Uid: ( 1000/  bernat)   Gid: ( 1000/  bernat)
+Access: 2021-12-19 15:58:32.531248275 +0100
+Modify: 2021-12-19 15:58:32.531248275 +0100
+Change: 2021-12-19 16:09:22.451271263 +0100
+ Birth: 2021-12-19 15:58:32.531248275 +0100
+
+    cat: esto es una prueba
+
+    namei: f: hl_pr
+ - hl_pr
+
+    readlink: (No surt res)
+
+hl_pr manté tot igual. sl_hr enllaça a aun fitxer inexistent, i certa informació (Tota la informació de pr.txt) no es por trobar.

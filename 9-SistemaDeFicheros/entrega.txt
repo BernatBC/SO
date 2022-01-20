@@ -1,0 +1,47 @@
+70a- $ ln $HOME/A $HOME/A/H ln: /home/bernat/A: hard link not allowed for directory
+Ha fallat perquè no pots fer un hardlink d'un directori.
+
+70b- D i G són arxius regulars (hardlink), mentres E i F són soft links.
+
+70c-
+stat:
+D, F, G: “estoy en el directorio A”
+E: cat: E: Is a directory
+
+readlink:
+D:
+E: /home/bernat/A
+F: D
+G:
+
+70d-
+No es fan els mateixos accessos. En el namei surt la ruta absoluta, mentres el readlink surt la ruta absoluta.
+
+70e-
+cat: a: Too many levels of symbolic links
+
+f: a
+ l a -> a
+   l a -> a
+     l a -> a
+       l a -> a
+         l a -> a
+           l a -> a
+             l a -> a
+               l a -> a
+                 l a -> a
+                   l a -> a
+                     l a -> a
+                       l a -> a
+                         l a -> a
+                           l a -> a
+                             l a -> a
+                               l a -> a
+                                 l a -> a
+                                   l a -> a
+                                     l a -> a
+                                       l a -> a
+                                         l a -> a
+namei: a: exceeded limit of symlinks
+
+El sistema arriba a un moment on hi ha tans accessos que ja no segueix.

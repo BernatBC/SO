@@ -1,0 +1,3 @@
+Per una part, podem saber que els dos wc d'un mateix fitxer original s'executi primer el "wc -l nombre_fichero", i després el "wc -l nombre_nuevo" ja que la creació de processos es fa de forma seqüencial.
+Per a fitxers diferents, no podem saber l'ordre ja que els procesos es creen de forma recurrent, i és el sistema operatiu el que decideix quin procés mostra abans el wc.
+També hi ha la possibilitat que els missatges es mostrin de forma intercalada, sempre que respecti l'ordre indicat a la primera línia.

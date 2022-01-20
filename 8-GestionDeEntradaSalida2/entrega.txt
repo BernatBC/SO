@@ -1,0 +1,5 @@
+67- El fichero redireccionado contiene Inicio y Fin. Solo la del padre ya que la salida del hijo es redireccionada a la pipe.
+
+68- No finaliza. El hijo sí finaliza. Esto sucede ya que el padre no ha cerrado la pipe de escritura, y el hijo sí.
+
+69- Podemos usar la pipe con las dos direcciones. En el open tenemos que indicar que usaremos O_RDWR en los dos ficheros.

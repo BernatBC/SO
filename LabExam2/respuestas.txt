@@ -1,0 +1,3 @@
+B) Està garantitzat ja que quan un procés té el resultat, a continució matem a tots els altres.
+
+Pregunta) La columna de números ens indica el nombre de hard links que té associat cada fitxer del llistat.

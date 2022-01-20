@@ -1,0 +1,12 @@
+1- Per crear la pipe he utilitzat la comanda "mknod prova pipe"
+   Redireccionant la sortida he utilitzat "cat < prova"
+   Redireccionant l'entrada he utilitzat "cat > prova"
+
+2- Desde dos terminals diferents no podem fer comunicacions mitjanánt una pipe sense nom perquè no es pot referenciar la pipe des de la segona terminal.
+   En una mateixa sí que es pot fer, amb la comanda "cat|cat". Ho he comprovat, i sí és possible.
+
+3- dup2(1, 4)
+   close(4)
+
+4- createSocket: Aquesta funció crea un socket. Primer, amb la funció strcpy() busquem una direcció vàlida, amb socket() creem un socket nou, i amb el bind() li assignem aquesta direcció. La funció listen activa el socket, preparat per rebre informació. En el cas que hi hagi un error en alguna crida a sistema, s'esborra la socket i retorna -1.
+   serverConnection: La funció accepta una nova connecció del socket.
